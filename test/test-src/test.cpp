@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "fpmax.h"
+#include "../../src/fpmax.h"
 
 using namespace std;
 
@@ -56,9 +56,9 @@ int main(int argc, char* argv[])
 	cout << "Testing FPmax* with in-memory I/O and min support 6, returning 2 largest patterns..." << flush;
 	
 	Dataset* dataset = loadDataset(argv[1]);
-	// printDataset(dataset);
+	printDataset(dataset);
 	
-	FISet* patterns = fpmax(dataset, 6, 2);
+	FISet* patterns = fpmax(dataset, 2, 8);
 	
 	unsigned time = clock()/CLOCKS_PER_SEC;
 	cout << " finished in " << time << " s (this is CPU time on Linux and wall time on Windows)" << endl;
@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
 	delete patterns;
 	
 	cout << "\nTesting FPmax* with file-based I/O and min support 5, returning all patterns..." << flush;
-	fpmax(argv[1], "patterns.txt", 5);
+	fpmax(argv[1], "patterns.txt", 2);
 	time = clock()/CLOCKS_PER_SEC - time;
 	cout << " finished in " << time << " s (this is CPU time on Linux and wall time on Windows)" << endl;
 	
